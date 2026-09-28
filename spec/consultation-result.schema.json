@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Office Hours Consultation Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol_version",
+    "consultation_id",
+    "result_id",
+    "request_revision",
+    "status",
+    "risks",
+    "provenance"
+  ],
+  "properties": {
+    "protocol_version": {
+      "const": "0.1"
+    },
+    "consultation_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "result_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "request_revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "enum": ["advice", "need_more_context"]
+    },
+    "advice": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "requested_context": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key", "reason"],
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "max_bytes": {
+            "type": "integer",
+            "minimum": 64
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expert", "created_at"],
+      "properties": {
+        "expert": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["adapter"],
+          "properties": {
+            "adapter": {
+              "type": "string",
+              "minLength": 1
+            },
+            "provider": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "trace_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "advice"
+          }
+        },
+        "required": ["status"]
+      },
+      "then": {
+        "required": ["advice"],
+        "not": {
+          "required": ["requested_context"]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "need_more_context"
+          }
+        },
+        "required": ["status"]
+      },
+      "then": {
+        "required": ["requested_context"],
+        "properties": {
+          "requested_context": {
+            "minItems": 1
+          }
+        },
+        "not": {
+          "required": ["advice"]
+        }
+      }
+    }
+  ]
+}
