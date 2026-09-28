@@ -76,6 +76,13 @@ requested_context:
 risks:
 ```
 
+Protocol v0.1 is now specified as a provider-neutral JSON contract:
+
+- [Protocol](docs/protocol-v0.1.md)
+- [Request schema](spec/consultation-packet.schema.json)
+- [Result schema](spec/consultation-result.schema.json)
+- [Incremental-context fixtures](fixtures/protocol-v0.1/)
+
 ## Why not simply route the whole task?
 
 A strong model is often most valuable at a narrow decision point, not necessarily as the worker for the entire session.
