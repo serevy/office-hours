@@ -1,0 +1,50 @@
+{
+  "protocol_version": "0.1",
+  "consultation_id": "fixture-retry-policy",
+  "revision": 2,
+  "goal": "Choose a safe retry strategy for a background synchronization worker.",
+  "current_state": "The worker passes its happy-path test, but retry behavior is not finalized.",
+  "decision_needed": "Choose fixed-interval retries or bounded exponential backoff with jitter.",
+  "constraints": [
+    "Synchronization is not latency-critical.",
+    "Duplicated writes are idempotent.",
+    "The implementation should remain simple."
+  ],
+  "attempted": [
+    "A fixed one-second retry was considered."
+  ],
+  "evidence": [
+    {
+      "key": "local_failure",
+      "summary": "A synthetic run observed a rate-limit failure after repeated requests."
+    },
+    {
+      "key": "remote_rate_limit_signal",
+      "summary": "The synthetic remote service returns a retry-after hint and becomes less reliable under bursty retry traffic."
+    }
+  ],
+  "options": [
+    {
+      "label": "fixed",
+      "summary": "Retry every second up to a fixed attempt limit."
+    },
+    {
+      "label": "backoff",
+      "summary": "Use bounded exponential backoff with jitter."
+    }
+  ],
+  "question": "Given the requested rate-limit evidence, which retry policy should we prefer?",
+  "context_budget": {
+    "max_bytes": 8192
+  },
+  "response_budget": {
+    "max_bytes": 4096
+  },
+  "provenance": {
+    "executor": {
+      "adapter": "synthetic-fixture"
+    },
+    "trace_id": "fixture-trace-001",
+    "created_at": "2026-09-28T00:00:02Z"
+  }
+}
