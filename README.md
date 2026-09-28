@@ -112,3 +112,13 @@ Early extraction from a personally dogfooded workflow. Interfaces are expected t
 ## License
 
 MIT.
+
+## Project decisions
+
+This repository uses [PDDR Kit](https://github.com/serevy/pddr-kit) to preserve durable Project / Product / Process decisions and their evidence.
+
+- Records: [`docs/records/`](docs/records/)
+- Template: [`.pddr/template.md`](.pddr/template.md)
+- Validate: `python .pddr/pddr.py validate --allow-empty`
+
+PDDR is not a task log. Create or update a record only when a durable decision is made; installation alone does not require a decision record.
