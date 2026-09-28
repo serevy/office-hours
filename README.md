@@ -122,3 +122,11 @@ This repository uses [PDDR Kit](https://github.com/serevy/pddr-kit) to preserve 
 - Validate: `python .pddr/pddr.py validate --allow-empty`
 
 PDDR is not a task log. Create or update a record only when a durable decision is made; installation alone does not require a decision record.
+
+## Baseline
+
+The original personally dogfooded consultation flow is preserved separately from the future portable core.
+
+- [Baseline design](docs/baseline-v0.md)
+- [Claude Code reference behavior](reference/claude-code/SKILL.md)
+- [Synthetic consultation fixtures](fixtures/baseline-v0/)
