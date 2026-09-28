@@ -3,8 +3,8 @@ id: PDDR-0001
 title: Bounded provider-neutral consultation contract
 decision_date: 2026-09-28
 recorded_date: 2026-09-28
-decision_status: proposed
-delivery_status: in-progress
+decision_status: accepted
+delivery_status: validated
 scope:
   - project
   - product
@@ -47,7 +47,7 @@ Token counts are not stable across provider and model families. A deterministic 
 - Description: Bound serialized request and result payloads by bytes, with adapters free to impose stricter token limits.
 - Benefits: Deterministic, portable, dependency-free, and testable across providers.
 - Costs / constraints: Byte limits are only an approximation of provider token cost.
-- Status: proposed
+- Status: accepted
 
 ### Option C: No core budget unit
 
@@ -58,9 +58,9 @@ Token counts are not stable across provider and model families. A deterministic 
 
 ## Decision
 
-Proposed: adopt Option B for protocol v0.1.
+Adopt Option B for protocol v0.1.
 
-The contract also proposes:
+The accepted contract also defines:
 
 - stable `consultation_id` across incremental turns;
 - monotonically increasing request `revision`;
@@ -70,11 +70,11 @@ The contract also proposes:
 - advisory authority only;
 - required adapter provenance with optional provider/model metadata.
 
-This record remains `proposed` until the protocol is reviewed and accepted.
+The protocol was reviewed and accepted on 2026-09-28 before merging PR #7.
 
 ## Delivery and validation
 
-Implementation is in progress in the Issue #2 branch.
+The protocol is implemented in PR #7 and its PDDR and protocol-fixture CI checks pass.
 
 Validation target:
 
@@ -105,6 +105,7 @@ Revisit if:
 ## Evidence
 
 - https://github.com/serevy/office-hours/issues/2
+- https://github.com/serevy/office-hours/pull/7
 - `docs/baseline-v0.md`
 - `docs/protocol-v0.1.md`
 - `fixtures/protocol-v0.1/`
