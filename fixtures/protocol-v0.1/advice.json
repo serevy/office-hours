@@ -1,0 +1,20 @@
+{
+  "protocol_version": "0.1",
+  "consultation_id": "fixture-retry-policy",
+  "result_id": "fixture-result-002",
+  "request_revision": 2,
+  "status": "advice",
+  "advice": "Prefer bounded exponential backoff with jitter, honor the retry-after hint when present, and keep both the maximum delay and retry count explicit.",
+  "rationale": "The workload is not latency-critical, the remote service exposes a delay hint, and bursty retries are already known to worsen reliability.",
+  "risks": [
+    "Backoff parameters that are too large can make operational recovery slower.",
+    "Retry exhaustion still needs an operator-visible failure state."
+  ],
+  "provenance": {
+    "expert": {
+      "adapter": "synthetic-fixture"
+    },
+    "trace_id": "fixture-trace-001",
+    "created_at": "2026-09-28T00:00:03Z"
+  }
+}
