@@ -1,0 +1,17 @@
+{
+  "name": "office-hours",
+  "version": "0.1.0",
+  "description": "Bounded expert consultation for coding-agent decision points.",
+  "author": {
+    "name": "serevy"
+  },
+  "repository": "https://github.com/serevy/office-hours",
+  "license": "MIT",
+  "keywords": [
+    "consultation",
+    "coding-agent",
+    "claude-code",
+    "expert",
+    "second-opinion"
+  ]
+}
