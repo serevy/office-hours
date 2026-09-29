@@ -112,6 +112,36 @@ A strong model is often most valuable at a narrow decision point, not necessaril
 - forcing the expert to be a more expensive model;
 - cloning one provider's native advisor feature.
 
+## Claude Code dogfood
+
+The first real adapter keeps the user-facing entrypoint intentionally small:
+
+```text
+/office-hours
+```
+
+Install the dogfood Skill and expert agent at user scope.
+
+Windows PowerShell:
+
+```powershell
+.\scripts\install-claude-code.ps1
+```
+
+macOS / Linux:
+
+```bash
+sh ./scripts/install-claude-code.sh
+```
+
+Start a new Claude Code session after the first install, then run `/office-hours` with or without an explicit question.
+
+The Skill is manual-only during dogfood (`disable-model-invocation: true`) so existing Advisor workflows do not mix with Office Hours results.
+
+This repository also includes a Claude Code plugin manifest for development and future packaging. Plugin mode uses the host namespace (`/office-hours:office-hours`); the canonical user-facing command remains `/office-hours`.
+
+See [Claude Code dogfood](docs/claude-code-dogfood.md) and [adapter boundary](docs/adapters-v0.1.md).
+
 ## Status
 
 Early extraction from a personally dogfooded workflow. Interfaces are expected to change.
