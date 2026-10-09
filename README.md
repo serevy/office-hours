@@ -1,5 +1,7 @@
 # office-hours
 
+[![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/serevy/office-hours?utm_source=oss&utm_medium=github&utm_campaign=serevy%2Foffice-hours&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)](https://coderabbit.ai)
+
 **Borrow a few minutes of senior intelligence.**
 
 `office-hours` is an experimental provider-neutral consultation layer for coding agents.
